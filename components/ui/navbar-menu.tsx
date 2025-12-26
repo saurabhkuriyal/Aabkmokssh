@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
 import { motion } from "motion/react";
+import React from "react";
 
 
 
 const transition = {
-  type: "spring",
+  type: "spring" as const,
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
