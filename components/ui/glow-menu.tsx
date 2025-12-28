@@ -1,10 +1,10 @@
 "use client"
 
-import * as React from "react"
-import { motion } from "framer-motion"
-import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
+import { useTheme } from "next-themes"
+import * as React from "react"
 
 interface MenuItem {
   icon: LucideIcon | React.FC
