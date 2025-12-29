@@ -1,4 +1,5 @@
-import { Header } from "@/components/custom/Header";
+//import { Header } from "@/components/custom/Header";
+import { DemoOne } from "@/components/custom/DemoOne";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -28,8 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="container mx-auto px-4">
-        <Header />
+        <div className="">
+        {/* <Header /> */}
+        <DemoOne></DemoOne>
         {children}
         </div>
       </body>
