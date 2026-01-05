@@ -9,6 +9,7 @@ type CarouselProps = {
     className?: string;
 };
 
+//some default images from unsplash
 const DEFAULT_IMAGES = [
     "https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b5d7f90d6f4d5d8f3a1a2c3e4b5f6a7",
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=59c6f2c4e8d1c4b8a9b8b8b7b6b5b4a3",
