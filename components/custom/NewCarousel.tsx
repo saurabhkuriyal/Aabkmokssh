@@ -103,7 +103,7 @@ export default function NewCarousel({
             {/* Slides */}
             <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${index * 100}%)` }}>
                 {images.map((src, i) => (
-                    <div key={i} className="min-w-full h-[50vh] shrink-0 mx-2">
+                    <div key={i} className="min-w-full h-[64vh] mx-2">
                         <div className="w-full aspect-video bg-gray-100 relative">
                             {/* Use next/image for optimization; set fill and object-cover */}
                             <Image
@@ -111,7 +111,7 @@ export default function NewCarousel({
                                 alt={`Slide ${i + 1}`}
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 100vw"
-                                className="object-cover"
+                                className="object-cover flex-shrink-0 w-full h-full"
                                 priority={i === 0}
                             />
                         </div>
