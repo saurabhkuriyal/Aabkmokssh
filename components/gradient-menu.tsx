@@ -1,10 +1,12 @@
 import React from 'react';
-import { IoHomeOutline, IoVideocamOutline, IoCameraOutline, IoShareSocialOutline, IoHeartOutline } from 'react-icons/io5';
+import { IoCompassOutline, IoHeartOutline, IoHomeOutline, IoPeopleOutline, IoShareSocialOutline } from 'react-icons/io5';
 
 const menuItems = [
   { title: 'Home', icon: <IoHomeOutline />, gradientFrom: '#a955ff', gradientTo: '#ea51ff' },
-  { title: 'Video', icon: <IoVideocamOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
-  { title: 'Photo', icon: <IoCameraOutline />, gradientFrom: '#FF9966', gradientTo: '#FF5E62' },
+  { title: 'About Us', icon: <IoPeopleOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
+  { title: 'Explore', icon: <IoCompassOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
+  // { title: 'Video', icon: <IoVideocamOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
+  //{ title: 'Explore', icon: <IoCameraOutline />, gradientFrom: '#FF9966', gradientTo: '#FF5E62' },
   { title: 'Share', icon: <IoShareSocialOutline />, gradientFrom: '#80FF72', gradientTo: '#7EE8FA' },
   { title: 'Tym', icon: <IoHeartOutline />, gradientFrom: '#ffa9c6', gradientTo: '#f434e2' }
 ];
@@ -16,7 +18,7 @@ export default function GradientMenu() {
         {menuItems.map(({ title, icon, gradientFrom, gradientTo }, idx) => (
           <li
             key={idx}
-            style={{ '--gradient-from': gradientFrom, '--gradient-to': gradientTo }}
+            style={{ '--gradient-from': gradientFrom, '--gradient-to': gradientTo } as React.CSSProperties}
             className="relative w-[60px] h-[60px] bg-white shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[180px] hover:shadow-none group cursor-pointer"
           >
             {/* Gradient background on hover */}

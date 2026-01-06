@@ -1,5 +1,6 @@
 //import { Header } from "@/components/custom/Header";
 import { DemoOne } from "@/components/custom/DemoOne";
+import Footer from "@/components/custom/Footer";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -33,6 +34,7 @@ export default function RootLayout({
           {/* <Header /> */}
           <DemoOne></DemoOne>
           {children}
+          <Footer/>
         </div>
       </body>
     </html>
