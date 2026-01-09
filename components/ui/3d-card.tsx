@@ -1,6 +1,11 @@
 import React, { useRef } from "react";
 
-export const Floating3DCard: React.FC = () => {
+export interface Floating3DCardProps {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export const Floating3DCard: React.FC<Floating3DCardProps> = ({ className = "", style = {} }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -27,28 +32,25 @@ export const Floating3DCard: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gray-100 text-gray-800 transition-colors duration-300 dark:bg-black dark:text-gray-100">
-      <div
-        className="flex w-full justify-center px-4 sm:px-6 md:px-8"
-        style={{ perspective: "1000px" }}
-      >
+    <div className={`relative flex items-center justify-center ${className}`} style={{ perspective: "1000px", ...style }}>
+      {/* This wrapper provides perspective but does not force full page width/height. Pass `className` from parent to control size/layout. */}
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="group relative w-full max-w-xs sm:max-w-sm md:max-w-md rounded-md border border-black/10 bg-white p-6 shadow-lg transition-transform duration-300 ease-out hover:shadow-xl dark:border-white/20 dark:bg-[#111111] dark:hover:shadow-2xl dark:hover:shadow-emerald-500/20"
+          className="group relative w-full max-w-xs sm:max-w-sm md:max-w-md rounded-md border border-black/10 bg-white p-6 shadow-lg transition-transform duration-300 ease-out hover:shadow-xl"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Content with translateZ for depth effect */}
           <h2
-            className="text-xl font-bold text-neutral-700 sm:text-2xl dark:text-white"
+            className="text-xl font-bold text-neutral-700 sm:text-2xl"
             style={{ transform: "translateZ(50px)" }}
           >
             Make things float in air 🪄
           </h2>
 
           <p
-            className="mt-2 text-sm text-neutral-500 sm:text-base dark:text-neutral-300"
+            className="mt-2 text-sm text-neutral-500 sm:text-base"
             style={{ transform: "translateZ(60px)" }}
           >
             Hover over this card to unleash the power of CSS perspective.
@@ -83,7 +85,6 @@ export const Floating3DCard: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
     </div>
   );
 };

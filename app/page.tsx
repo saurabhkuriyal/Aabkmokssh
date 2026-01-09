@@ -6,10 +6,14 @@ import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
 
 export default function Home() {
   return (
-    <div>
-      <CarouselDemo />
+    <div className="mx-3 ">
+      <CarouselDemo className="rounded-2xl"/>
       <Items/>
-      <PremiumCard/>
+      <div className="grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
+      <PremiumCard   />
+      <PremiumCard   />
+      </div>
+      
       <AnimatedTestimonialsDemo/>
     </div>
   );

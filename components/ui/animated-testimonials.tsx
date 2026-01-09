@@ -23,6 +23,7 @@ export const AnimatedTestimonials = ({
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
+  const [randomRotations, setRandomRotations] = useState<number[]>([]);
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -37,14 +38,23 @@ export const AnimatedTestimonials = ({
   };
 
   useEffect(() => {
+    // Initialize random rotations only once on client side
+    if (randomRotations.length === 0) {
+      setRandomRotations(
+        testimonials.map(() => Math.floor(Math.random() * 21) - 10)
+      );
+    }
+  }, []);
+
+  useEffect(() => {
     if (autoplay) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
   }, [autoplay]);
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
+  const randomRotateY = (index: number) => {
+    return randomRotations[index] || 0;
   };
 
   return (
@@ -60,13 +70,13 @@ export const AnimatedTestimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: -100,
-                    rotate: randomRotateY(),
+                    rotate: randomRotateY(index),
                   }}
                   animate={{
                     opacity: isActive(index) ? 1 : 0.7,
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
-                    rotate: isActive(index) ? 0 : randomRotateY(),
+                    rotate: isActive(index) ? 0 : randomRotateY(index),
                     zIndex: isActive(index)
                       ? 999
                       : testimonials.length + 2 - index,
@@ -76,7 +86,7 @@ export const AnimatedTestimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: 100,
-                    rotate: randomRotateY(),
+                    rotate: randomRotateY(index),
                   }}
                   transition={{
                     duration: 0.4,
