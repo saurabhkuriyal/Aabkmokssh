@@ -46,14 +46,15 @@ export const Floating3DCard: React.FC = () => {
             className="text-xl font-bold text-neutral-700 sm:text-2xl"
             style={{ transform: "translateZ(50px)" }}
           >
-            Make things float in air 🪄
+            Path to Success🪄
           </h2>
 
           <p
             className="mt-2 text-sm text-neutral-500 sm:text-base"
             style={{ transform: "translateZ(60px)" }}
           >
-            Hover over this card to unleash the power of CSS perspective.
+            Our primium gemstone collection <br />
+            which is meticulously curated to bring you
           </p>
 
           <div
@@ -81,7 +82,7 @@ export const Floating3DCard: React.FC = () => {
               className="rounded-sm bg-black px-6 py-3 text-xs font-bold text-white transition-colors duration-300 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:text-sm"
               style={{ transform: "translateZ(20px)" }}
             >
-              Get Started
+              Have a look
             </button>
           </div>
         </div>

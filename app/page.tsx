@@ -9,8 +9,14 @@ export default function Home() {
     <div className="mx-3 ">
       <CarouselDemo className="rounded-2xl"/>
       <Items/>
+
+      <section className="mt-10 mb-6 text-center">
+        <h2 className="text-2xl font-extrabold text-gray-900">Here’s something for you 🎁</h2>
+        {/* <p className="mt-2 text-sm text-gray-600">Explore our premium selection — handpicked for devotion, balance, and timeless beauty.</p> */}
+      </section>
+
       <div className=" grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-3 items-center">
-      <PremiumCard />
+        <PremiumCard />
         <div className="flex flex-col justify-center p-4">
           <p className="text-4xl font-semibold mb-1">Sacred Gemstone — Healing & Harmony ✨</p>
           <p className="text-2xl text-gray-600 mb-2">A timeless companion for spiritual balance 🙏</p>
@@ -22,6 +28,11 @@ export default function Home() {
         </div>
       </div>
       
+      <section className="mt-12 mb-8 text-center">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Testimonials</h2>
+        <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Hear from our community — real experiences with our sacred gemstones and the harmony they bring.</p>
+      </section>
+
       <AnimatedTestimonialsDemo/>
     </div>
   );
