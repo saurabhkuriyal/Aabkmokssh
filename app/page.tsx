@@ -15,16 +15,16 @@ export default function Home() {
         <p className="mt-2 text-sm text-gray-600">Explore our premium selection — handpicked for devotion, balance, and timeless beauty.</p>
       </section> */}
 
-      <div className="my-2 grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="my-10 grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 md:gap-2 lg:gap-3">
         <PremiumCard />
         <div className="flex flex-col justify-center p-4">
           <p className="text-4xl font-semibold mb-1">Sacred Gemstone — Healing & Harmony ✨</p>
           <p className="text-2xl text-gray-600 mb-2">A timeless companion for spiritual balance 🙏</p>
-          <pre className="text-md text-gray-700">Revered across traditions,<br />
+          <p className="text-md text-gray-700">Revered across traditions,<br />
             this religious stone is believed to channel protective energies,<br />
             promote inner peace, and strengthen devotion. <br />
             Its luminous surface and grounding presence make it perfect for <br />
-            meditation, offerings, and daily rituals. 🌿💎</pre>
+            meditation, offerings, and daily rituals. 🌿💎</p>
         </div>
       </div>
       

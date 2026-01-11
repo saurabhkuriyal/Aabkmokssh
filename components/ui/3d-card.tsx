@@ -27,11 +27,11 @@ export const Floating3DCard: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-white text-gray-800 transition-colors duration-300
-    overflow-x-hidden
+    <div className="flex w-full items-center justify-center bg-white text-gray-800 transition-colors duration-300
+    
      ">
       <div
-        className="flex w-full justify-center px-4 sm:px-6 md:px-8"
+        className="flex w-full justify-center px-1  md:px-2"
         style={{ perspective: "1000px" }}
       >
         <div
