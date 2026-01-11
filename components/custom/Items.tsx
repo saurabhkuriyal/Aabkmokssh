@@ -1,11 +1,10 @@
-
 const products = [
     {
         id: 1,
         name: 'Earthen Bottle',
         href: '#',
         price: '$48',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        imageSrc: "/Blue_stone.jpg",
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
@@ -13,7 +12,7 @@ const products = [
         name: 'Nomad Tumbler',
         href: '#',
         price: '$35',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-02.jpg',
+        imageSrc: '/Emaral.jpg',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
@@ -21,7 +20,7 @@ const products = [
         name: 'Focus Paper Refill',
         href: '#',
         price: '$89',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-03.jpg',
+        imageSrc: '/Blue_Rectangular.jpg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
@@ -29,7 +28,7 @@ const products = [
         name: 'Machined Mechanical Pencil',
         href: '#',
         price: '$35',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-04.jpg',
+        imageSrc: '/Green_Stone.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
     {
@@ -37,7 +36,7 @@ const products = [
         name: 'Focus Card Tray',
         href: '#',
         price: '$64',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-05.jpg',
+        imageSrc: '/curr_hero.jpg',
         imageAlt: 'Paper card sitting upright in walnut card holder on desk.',
     },
     {
@@ -45,7 +44,7 @@ const products = [
         name: 'Focus Multi-Pack',
         href: '#',
         price: '$39',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-06.jpg',
+        imageSrc: '/Emarald.avif',
         imageAlt: 'Stack of 3 small drab green cardboard paper card refill boxes with white text.',
     },
     {
@@ -53,7 +52,7 @@ const products = [
         name: 'Brass Scissors',
         href: '#',
         price: '$50',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-07.jpg',
+        imageSrc: '/Blue_Rectangular.jpg',
         imageAlt: 'Brass scissors with geometric design, black steel finger holes, and included upright brass stand.',
     },
     {
@@ -61,7 +60,7 @@ const products = [
         name: 'Focus Carry Pouch',
         href: '#',
         price: '$32',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-04-image-card-08.jpg',
+        imageSrc: '/Green_Stone.jpg',
         imageAlt: 'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
     },
 ]
