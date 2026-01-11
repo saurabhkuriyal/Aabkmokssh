@@ -1,11 +1,6 @@
 import React, { useRef } from "react";
 
-export interface Floating3DCardProps {
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-export const Floating3DCard: React.FC<Floating3DCardProps> = ({ className = "", style = {} }) => {
+export const Floating3DCard: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -32,8 +27,13 @@ export const Floating3DCard: React.FC<Floating3DCardProps> = ({ className = "", 
   };
 
   return (
-    <div className={`relative flex items-center justify-center ${className}`} style={{ perspective: "1000px", ...style }}>
-      {/* This wrapper provides perspective but does not force full page width/height. Pass `className` from parent to control size/layout. */}
+    <div className="flex min-h-screen w-full items-center justify-center bg-white text-gray-800 transition-colors duration-300
+    
+     ">
+      <div
+        className="flex w-full justify-center px-4 sm:px-6 md:px-8"
+        style={{ perspective: "1000px" }}
+      >
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -85,6 +85,7 @@ export const Floating3DCard: React.FC<Floating3DCardProps> = ({ className = "", 
             </button>
           </div>
         </div>
+      </div>
     </div>
   );
 };
