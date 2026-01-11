@@ -10,12 +10,12 @@ export default function Home() {
       <CarouselDemo className="rounded-2xl"/>
       <Items/>
 
-      <section className="mt-10 mb-6 text-center">
+      {/* <section className="mt-10 mb-6 text-center">
         <h2 className="text-2xl font-extrabold text-gray-900">Here’s something for you 🎁</h2>
-        {/* <p className="mt-2 text-sm text-gray-600">Explore our premium selection — handpicked for devotion, balance, and timeless beauty.</p> */}
-      </section>
+        <p className="mt-2 text-sm text-gray-600">Explore our premium selection — handpicked for devotion, balance, and timeless beauty.</p>
+      </section> */}
 
-      <div className=" grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-3 items-center">
+      <div className="my-2 grid md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3">
         <PremiumCard />
         <div className="flex flex-col justify-center p-4">
           <p className="text-4xl font-semibold mb-1">Sacred Gemstone — Healing & Harmony ✨</p>

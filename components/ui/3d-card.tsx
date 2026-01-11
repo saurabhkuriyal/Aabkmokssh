@@ -28,7 +28,7 @@ export const Floating3DCard: React.FC = () => {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-white text-gray-800 transition-colors duration-300
-    
+    overflow-x-hidden
      ">
       <div
         className="flex w-full justify-center px-4 sm:px-6 md:px-8"
@@ -64,7 +64,7 @@ export const Floating3DCard: React.FC = () => {
             <img
               src="/latest-hero.webp"
               alt="thumbnail"
-              className="h-48 w-full rounded-sm object-cover transition-shadow duration-300 sm:h-60 group-hover:shadow-xl"
+              className="h-48 w-full max-w-full rounded-sm object-cover transition-shadow duration-300 sm:h-60 group-hover:shadow-xl"
             />
           </div>
 
