@@ -6,7 +6,7 @@ import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
 
 export default function Home() {
   return (
-    <div className="mx-3 ">
+    <div className="mx-3 bg-gradient-to-b from-white to-emerald-50 ">
       <CarouselDemo className="rounded-2xl"/>
       <Items/>
 
