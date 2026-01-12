@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoCompassOutline, IoHeartOutline, IoHomeOutline, IoPeopleOutline, IoShareSocialOutline } from 'react-icons/io5';
+import { IoCompassOutline, IoHomeOutline, IoPeopleOutline, IoShareSocialOutline } from 'react-icons/io5';
 
 const menuItems = [
   { title: 'Home', icon: <IoHomeOutline />, gradientFrom: '#a955ff', gradientTo: '#ea51ff' },
@@ -7,8 +7,8 @@ const menuItems = [
   { title: 'Explore', icon: <IoCompassOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
   // { title: 'Video', icon: <IoVideocamOutline />, gradientFrom: '#56CCF2', gradientTo: '#2F80ED' },
   //{ title: 'Explore', icon: <IoCameraOutline />, gradientFrom: '#FF9966', gradientTo: '#FF5E62' },
-  { title: 'Share', icon: <IoShareSocialOutline />, gradientFrom: '#80FF72', gradientTo: '#7EE8FA' },
-  { title: 'Tym', icon: <IoHeartOutline />, gradientFrom: '#ffa9c6', gradientTo: '#f434e2' }
+  { title: 'Contact', icon: <IoShareSocialOutline />, gradientFrom: '#80FF72', gradientTo: '#7EE8FA' },
+  //{ title: 'Tym', icon: <IoHeartOutline />, gradientFrom: '#ffa9c6', gradientTo: '#f434e2' }
 ];
 
 export default function GradientMenu() {
