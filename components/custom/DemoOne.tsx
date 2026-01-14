@@ -2,7 +2,7 @@ import GradientMenu from "../gradient-menu";
 
 const DemoOne = () => {
     return (
-        <div className="flex w-[95vw] my-3 mx-5 h-[15vh] px-2 justify-between items-center border rounded-2xl bg-white/20 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-black/10 shadow-lg overflow-hidden">
+        <div className="flex w-[95vw] my-3 mx-5 h-[15vh] px-2 justify-between items-center border-b rounded-2xl backdrop-blur-md shadow-lg overflow-hidden bg-gradient-to-r from-purple-300  to-green-100">
             <h1>Here will be the logo</h1>
             <GradientMenu />
         </div>
