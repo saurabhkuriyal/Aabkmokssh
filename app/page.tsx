@@ -3,6 +3,7 @@ import Items from "@/components/custom/Items";
 import CarouselDemo from "@/components/custom/NewCarousel";
 import PremiumCard from "@/components/custom/PremiumCard";
 import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
+import Accordian from "@/components/custom/accordian";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       </section>
 
       <AnimatedTestimonialsDemo/>
+      <Accordian/>
     </div>
   );
 }
