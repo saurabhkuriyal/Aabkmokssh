@@ -48,7 +48,7 @@ export default function page() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left: Info card */}
           <section className="space-y-6">
-            <div className="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-8 shadow-lg border border-slate-100">
+            <div className="bg-linear-to-br from-emerald-50 to-white rounded-2xl p-8 shadow-lg border border-slate-100">
               <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Contact us</h1>
               <p className="text-slate-600 mt-2">Have a question, partnership idea or feedback? Send us a message — we typically reply within 1-2 business days.</p>
 
