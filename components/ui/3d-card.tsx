@@ -27,7 +27,7 @@ export const Floating3DCard: React.FC = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-center bg-white text-gray-800 transition-colors duration-300
+    <div className="flex w-full items-center justify-center border-y-emerald-50 text-gray-800 transition-colors duration-300
     
      ">
       <div

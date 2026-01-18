@@ -9,7 +9,7 @@ export default function BannerNew() {
         <p className="flex justify-center text-sm">
           <a href="#" className="group">
             <span className="me-1 text-base leading-none">✨</span>
-            Introducing transactional and marketing emails
+            Discover our Sacred Gemstone Collection — Embrace Healing & Harmony Today!
             <ArrowRight
               className="-mt-0.5 ms-2 inline-flex opacity-60 transition-transform group-hover:translate-x-0.5"
               size={16}
