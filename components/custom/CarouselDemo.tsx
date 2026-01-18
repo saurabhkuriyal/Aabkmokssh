@@ -10,7 +10,7 @@ import {
 
 export default function CarouselDemo() {
     return (
-        <Carousel className="w-full h-[50vh]">
+        <Carousel className="w-full mb-3">
             <CarouselContent>
                 {Array.from({ length: 5 }).map((_, index) => (
                     <CarouselItem key={index}>

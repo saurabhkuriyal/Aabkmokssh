@@ -7,7 +7,7 @@ import Accordian from "@/components/custom/accordian";
 
 export default function Home() {
   return (
-    <div className="mx-3 bg-gradient-to-b from-white to-emerald-50 ">
+    <div className="mx-3">
       <CarouselDemo className="rounded-2xl"/>
       <Items/>
 
@@ -39,3 +39,5 @@ export default function Home() {
     </div>
   );
 }
+
+// bg-gradient-to-b from-white to-emerald-50 
