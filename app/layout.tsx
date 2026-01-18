@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className=" bg-green-950">
+        <div className="bg-gradient-to-b from-white to-emerald-50 min-h-screen flex flex-col justify-between">
           {/* <Header /> */}
           <DemoOne></DemoOne>
           {children}
