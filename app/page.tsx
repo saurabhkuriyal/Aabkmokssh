@@ -1,14 +1,17 @@
 "use client";
+import Accordian from "@/components/custom/accordian";
+import BannerNew from "@/components/custom/BannerNew";
 import Items from "@/components/custom/Items";
 import CarouselDemo from "@/components/custom/NewCarousel";
 import PremiumCard from "@/components/custom/PremiumCard";
 import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
-import Accordian from "@/components/custom/accordian";
+
 
 export default function Home() {
   return (
     <div className="mx-3">
       <CarouselDemo className="rounded-2xl"/>
+      <BannerNew/>
       <Items/>
 
       {/* <section className="mt-10 mb-6 text-center">
