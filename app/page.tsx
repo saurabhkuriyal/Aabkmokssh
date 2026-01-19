@@ -10,9 +10,13 @@ import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
 export default function Home() {
   return (
     <div className="mx-3">
-      <CarouselDemo className="rounded-2xl"/>
-      <BannerNew/>
-      <Items/>
+      <CarouselDemo className="rounded-2xl" />
+      <BannerNew />
+      <section className="mt-12 mb-8 text-center">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Explore our products</h2>
+        <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Hear are some of us products</p>
+      </section>
+      <Items />
 
       {/* <section className="mt-10 mb-6 text-center">
         <h2 className="text-2xl font-extrabold text-gray-900">Here’s something for you 🎁</h2>
@@ -31,14 +35,14 @@ export default function Home() {
             meditation, offerings, and daily rituals. 🌿💎</p>
         </div>
       </div>
-      
+
       <section className="mt-12 mb-8 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Testimonials</h2>
         <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Hear from our community — real experiences with our sacred gemstones and the harmony they bring.</p>
       </section>
 
-      <AnimatedTestimonialsDemo/>
-      <Accordian/>
+      <AnimatedTestimonialsDemo />
+      <Accordian />
     </div>
   );
 }
