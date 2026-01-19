@@ -1,4 +1,7 @@
-import { StarIcon } from '@heroicons/react/20/solid'
+"use client";
+import Crystal from "@/lib/product.json";
+import { StarIcon } from '@heroicons/react/20/solid';
+import { useParams } from "next/navigation";
 
 // 1. Define Interfaces for your data structures
 interface Breadcrumb {
@@ -108,6 +111,11 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 }
 
 export default function () {
+    const params = useParams();
+    const id = params.id as string;
+    const crystal = Crystal.find((c) => c.id === parseInt(id));
+    console.log("--------", crystal);
+    
     return (
         <div className="bg-white">
             <div className="pt-6">
@@ -134,7 +142,7 @@ export default function () {
                         ))}
                         <li className="text-sm">
                             <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
-                                {product.name}
+                                {crystal?.name}
                             </a>
                         </li>
                     </ol>
@@ -167,13 +175,13 @@ export default function () {
                 {/* Product info */}
                 <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
                     <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+                        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{crystal?.name}</h1>
                     </div>
 
                     {/* Options */}
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
-                        <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+                        <p className="text-3xl tracking-tight text-gray-900">{crystal?.price}</p>
 
                         {/* Reviews */}
                         <div className="mt-6">
@@ -258,6 +266,8 @@ export default function () {
                                     </div>
                                 </fieldset>
                             </div> */}
+
+                            
 
                             <button
                                 type="submit"

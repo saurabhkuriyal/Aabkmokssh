@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Amethyst Cluster",
+    "description": "Beautiful purple amethyst cluster with natural formations and raw edges. Known for its calming and protective properties.",
+    "price": 45.99
+  },
+  {
+    "id": 2,
+    "name": "Clear Quartz Point",
+    "description": "Pure clear quartz crystal point with excellent clarity. Believed to amplify energy and intention.",
+    "price": 32.50
+  },
+  {
+    "id": 3,
+    "name": "Rose Quartz Heart",
+    "description": "Polished rose quartz carved into a heart shape. Associated with love, compassion, and emotional healing.",
+    "price": 28.75
+  },
+  {
+    "id": 4,
+    "name": "Black Tourmaline Raw",
+    "description": "Raw black tourmaline specimen with natural terminations. Known for grounding and protection against negative energy.",
+    "price": 55.00
+  },
+  {
+    "id": 5,
+    "name": "Citrine Geode",
+    "description": "Golden yellow citrine geode with sparkling interior. Associated with abundance, prosperity, and positive energy.",
+    "price": 78.99
+  },
+  {
+    "id": 6,
+    "name": "Labradorite Palm Stone",
+    "description": "Smooth polished labradorite stone perfect for palm meditation. Features beautiful iridescent flash effects.",
+    "price": 24.99
+  },
+  {
+    "id": 7,
+    "name": "Selenite Wand",
+    "description": "Translucent selenite crystal wand. Used for cleansing, clarity, and spiritual alignment.",
+    "price": 19.50
+  },
+  {
+    "id": 8,
+    "name": "Aventurine Tower",
+    "description": "Green aventurine polished into a tower shape. Associated with luck, opportunity, and prosperity.",
+    "price": 35.00
+  }
+]
