@@ -114,7 +114,7 @@ export default function () {
     const params = useParams();
     const id = params.id as string;
     const crystal = Crystal.find((c) => c.id === parseInt(id));
-    console.log("--------", crystal);
+    // console.log("--------", crystal);
     
     return (
         <div className="bg-white">

@@ -46,5 +46,12 @@
     "name": "Aventurine Tower",
     "description": "Green aventurine polished into a tower shape. Associated with luck, opportunity, and prosperity.",
     "price": 35.00
+  },
+   {
+    "id": 1111,
+    "name": "Aventurine Tower",
+    "description": "Green aventurine polished into a tower shape. Associated with luck, opportunity, and prosperity.",
+    "price": 35.00
   }
+  
 ]

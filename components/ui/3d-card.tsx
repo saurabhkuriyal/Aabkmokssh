@@ -69,21 +69,23 @@ export const Floating3DCard: React.FC = () => {
           </div>
 
           <div className="mt-8 flex sm:flex-row items-center justify-between gap-4 sm:gap-0">
-            <a
-              href="https://rahulv.dev"
+            {/* <a
+              href='/crystal/3'
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl px-4 py-2 text-xs font-medium text-neutral-700 transition-colors duration-300 hover:text-emerald-600 dark:text-gray-200 dark:hover:text-emerald-400 sm:text-sm"
               style={{ transform: "translateZ(20px)" }}
             >
               Visit →
-            </a>
+            </a> */}
+            <a href="/crystal/1111">
             <button
               className="rounded-sm bg-black px-6 py-3 text-xs font-bold text-white transition-colors duration-300 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:text-sm"
               style={{ transform: "translateZ(20px)" }}
             >
               Have a look
             </button>
+            </a>
           </div>
         </div>
       </div>
