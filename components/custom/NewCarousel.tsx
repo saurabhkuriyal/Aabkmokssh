@@ -16,7 +16,7 @@ const DEFAULT_IMAGES = [
     "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d6a6f1d2c0c4e6b2f5c8a9e0f1a2b3c",
 ];
 
-export default function NewCarousel({
+export default function Carousel({
     images = DEFAULT_IMAGES,
     interval = 4000,
     className = "",
@@ -33,6 +33,11 @@ export default function NewCarousel({
         return stopAutoPlay;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index, interval, length]);
+
+    function onKeyDown(e: React.KeyboardEvent) {
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+    }
 
     function startAutoPlay() {
         stopAutoPlay();
@@ -87,7 +92,7 @@ export default function NewCarousel({
 
     return (
         <div
-            className={`w-full relative overflow-hidden ${className}`}
+            className={`w-full relative overflow-hidden rounded-2xl bg-gray-100 ${className}`}
             onMouseEnter={() => {
                 isHoveredRef.current = true;
                 stopAutoPlay();
@@ -98,13 +103,17 @@ export default function NewCarousel({
             }}
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
+            onKeyDown={onKeyDown}
+            tabIndex={0}
+            role="region"
             aria-roledescription="carousel"
+            aria-label="Image carousel"
         >
             {/* Slides */}
             <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${index * 100}%)` }}>
                 {images.map((src, i) => (
                     <div key={i} className="min-w-full h-[64vh] mx-2">
-                        <div className="w-full aspect-video bg-gray-100 relative">
+                        <div className="w-full h-full bg-gray-100 relative">
                             {/* Use next/image for optimization; set fill and object-cover */}
                             <Image
                                 src={src}
@@ -125,37 +134,39 @@ export default function NewCarousel({
 
             {/* Controls */}
             <button
-                aria-label="Previous"
+                aria-label="Previous slide"
                 onClick={() => {
                     prev();
                 }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
-            >
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white transition-all">
+
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                     <path fillRule="evenodd" d="M12.293 16.293a1 1 0 010 1.414l-1.414 1.414a1 1 0 01-1.414 0L3 12.243l5.465-6.878a1 1 0 011.414 0l1.414 1.414a1 1 0 010 1.414L7.414 12l4.879 4.879z" clipRule="evenodd" />
                 </svg>
             </button>
 
             <button
-                aria-label="Next"
+                aria-label="Next slide"
                 onClick={() => {
                     next();
                 }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
-            >
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white transition-all">
+
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                     <path fillRule="evenodd" d="M7.707 3.707a1 1 0 010-1.414L9.121.879a1 1 0 011.414 0l6.879 6.879-5.465 6.878a1 1 0 01-1.414 0L10.121 12.95a1 1 0 010-1.414l4.879-4.879L7.707 3.707z" clipRule="evenodd" />
                 </svg>
             </button>
 
             {/* Dots */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-3 z-20 flex gap-2">
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex gap-2" role="tablist">
                 {images.map((_, i) => (
                     <button
                         key={i}
                         onClick={() => goTo(i)}
-                        className={`w-3 h-3 rounded-full transition-colors ${i === index ? "bg-white" : "bg-white/60"}`}
+                        className={`w-3 h-3 rounded-full transition-colors ${i === index ? "bg-white" : "bg-white/60"} hover:bg-white`}
                         aria-label={`Go to slide ${i + 1}`}
+                        aria-selected={i === index}
+                        role="tab"
                     />
                 ))}
             </div>
