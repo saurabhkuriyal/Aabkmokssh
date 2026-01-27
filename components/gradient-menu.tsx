@@ -13,7 +13,7 @@ const menuItems = [
 
 export default function GradientMenu() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-dark">
+    <div className="flex justify-center items-center">
       <ul className="flex gap-6">
         {menuItems.map(({ link, title, icon, gradientFrom, gradientTo }, idx) => (
           <li

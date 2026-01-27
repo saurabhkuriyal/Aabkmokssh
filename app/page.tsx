@@ -9,8 +9,8 @@ import { AnimatedTestimonialsDemo } from "@/components/custom/Testimonials";
 
 export default function Home() {
   return (
-    <div className="mx-3">
-      <CarouselDemo className="rounded-2xl" />
+    <div className="mx-2">
+      <CarouselDemo className="rounded-2xl mt-4" />
       <BannerNew />
       <section className="mt-12 mb-8 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Explore our products</h2>
