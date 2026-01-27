@@ -16,22 +16,23 @@ const DemoOne = () => {
     });
 
     return (
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3">
+        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center items-start mx-2 mt-2">
             <motion.div
                 layout
-                initial={{ width: "95vw", borderRadius: "1rem" }}
+                initial={{ width: "100%", borderRadius: "1rem", marginTop: 0 }}
                 animate={{
-                    width: isScrolled ? "auto" : "95vw",
-                    backgroundColor: isScrolled ? "rgba(255, 255, 255, 0)" : "rgba(168, 85, 247, 0.4)", // Fallback color
+                    width: isScrolled ? "auto" : "100%",
+                    borderRadius: isScrolled ? "2rem" : "1rem",
+                    marginTop: isScrolled ? "1rem" : "0",
+                    backgroundColor: isScrolled ? "rgba(255, 255, 255, 0)" : "rgba(168, 85, 247, 0.4)",
+                    paddingLeft: isScrolled ? "1rem" : "2rem",
+                    paddingRight: isScrolled ? "1rem" : "2rem",
                 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                className={`flex h-[15vh] px-2 items-center backdrop-blur-md shadow-lg overflow-hidden ${!isScrolled ? "justify-between bg-gradient-to-b from-purple-500 to-white/30" : "justify-center shadow-none backdrop-blur-none"
+                className={`flex h-24 items-center backdrop-blur-md shadow-lg overflow-hidden ${!isScrolled
+                    ? "justify-between bg-gradient-to-b from-purple-500 to-white/30"
+                    : "justify-center shadow-none backdrop-blur-none"
                     }`}
-                style={{
-                    // Removing the class-based background if likely to conflict, relying on explicit animation for smoother transition if needed.
-                    // But for gradient, CSS transition might be better.
-                    // Let's rely on the classNames for gradient and framer-motion layout for movement.
-                }}
             >
                 <AnimatePresence mode="popLayout">
                     {!isScrolled && (
@@ -46,7 +47,7 @@ const DemoOne = () => {
                             <img
                                 src="/logo.PNG"
                                 alt="logo"
-                                className="h-[50vh] w-auto object-contain pt-12 pr-4"
+                                className="h-16 w-auto object-contain"
                             />
                         </motion.div>
                     )}
