@@ -14,12 +14,12 @@ const menuItems = [
 export default function GradientMenu() {
   return (
     <div className="flex justify-center items-center">
-      <ul className="flex gap-6">
+      <ul className="flex gap-3 md:gap-6">
         {menuItems.map(({ link, title, icon, gradientFrom, gradientTo }, idx) => (
           <li
             key={idx}
             style={{ '--gradient-from': gradientFrom, '--gradient-to': gradientTo } as React.CSSProperties}
-            className="relative w-[60px] h-[60px] bg-white shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[180px] hover:shadow-none group cursor-pointer"
+            className="relative w-12 h-12 md:w-[60px] md:h-[60px] bg-white shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[150px] md:hover:w-[180px] hover:shadow-none group cursor-pointer"
           >
             <a href={link} className="absolute inset-0 rounded-full flex items-center justify-center">
               {/* Gradient background on hover */}

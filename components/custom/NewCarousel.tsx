@@ -1,173 +1,194 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-type CarouselProps = {
-    images?: string[]; // URLs (can be /images/xxx.jpg in public or external links)
-    interval?: number; // ms
-    className?: string;
-};
-
-//some default images from unsplash
-const DEFAULT_IMAGES = [
-    "https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b5d7f90d6f4d5d8f3a1a2c3e4b5f6a7",
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=59c6f2c4e8d1c4b8a9b8b8b7b6b5b4a3",
-    "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d6a6f1d2c0c4e6b2f5c8a9e0f1a2b3c",
+const SLIDES = [
+    {
+        id: 1,
+        title: "Why wait? Get Heal.",
+        subtitle: "Experience the divine energy of sacred gemstones.",
+        image: "/Emaral.jpg",
+        accent: "from-emerald-600/20 to-emerald-900/40",
+        buttonText: "Explore Healing",
+    },
+    {
+        id: 2,
+        title: "Prosperity & Abundance",
+        subtitle: "Invite wealth and positive vibes into your life.",
+        image: "/Blue_stone.jpg",
+        accent: "from-blue-600/20 to-blue-900/40",
+        buttonText: "Attract Money",
+    },
+    {
+        id: 3,
+        title: "Shield Your Spirit",
+        subtitle: "Protect yourself from bad omens and negative energy.",
+        image: "/curr_hero.jpg",
+        accent: "from-purple-600/20 to-purple-900/40",
+        buttonText: "View Protection",
+    },
 ];
 
-export default function Carousel({
-    images = DEFAULT_IMAGES,
-    interval = 4000,
-    className = "",
-}: CarouselProps) {
-    const [index, setIndex] = useState(0);
-    const timerRef = useRef<number | null>(null);
-    const isHoveredRef = useRef(false);
-    const touchStartX = useRef<number | null>(null);
+export default function NewCarousel({ className }: { className?: string }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
 
-    const length = images.length;
+    const slideNext = useCallback(() => {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+    }, []);
+
+    const slidePrev = useCallback(() => {
+        setDirection(-1);
+        setCurrentIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+    }, []);
 
     useEffect(() => {
-        startAutoPlay();
-        return stopAutoPlay;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [index, interval, length]);
+        const timer = setInterval(slideNext, 6000);
+        return () => clearInterval(timer);
+    }, [slideNext]);
 
-    function onKeyDown(e: React.KeyboardEvent) {
-        if (e.key === "ArrowLeft") prev();
-        if (e.key === "ArrowRight") next();
-    }
-
-    function startAutoPlay() {
-        stopAutoPlay();
-        // only autoplay if more than 1 image
-        if (length <= 1) return;
-        timerRef.current = window.setInterval(() => {
-            if (!isHoveredRef.current) {
-                setIndex((prev) => (prev + 1) % length);
-            }
-        }, interval);
-    }
-
-    function stopAutoPlay() {
-        if (timerRef.current) {
-            window.clearInterval(timerRef.current);
-            timerRef.current = null;
-        }
-    }
-
-    function goTo(i: number) {
-        setIndex(((i % length) + length) % length);
-    }
-
-    function prev() {
-        goTo(index - 1);
-    }
-
-    function next() {
-        goTo(index + 1);
-    }
-
-    // Touch handlers for swipe
-    function onTouchStart(e: React.TouchEvent) {
-        touchStartX.current = e.touches[0].clientX;
-    }
-
-    function onTouchEnd(e: React.TouchEvent) {
-        if (touchStartX.current === null) return;
-        const touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX.current - touchEndX;
-        const threshold = 40; // min px to count as swipe
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-                // swiped left
-                next();
-            } else {
-                prev();
-            }
-        }
-        touchStartX.current = null;
-    }
+    const variants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? "100%" : "-100%",
+            opacity: 0,
+            scale: 1.1,
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1,
+            scale: 1,
+        },
+        exit: (direction: number) => ({
+            zIndex: 0,
+            x: direction < 0 ? "100%" : "-100%",
+            opacity: 0,
+            scale: 0.9,
+        }),
+    };
 
     return (
-        <div
-            className={`w-full relative overflow-hidden rounded-2xl bg-gray-100 ${className}`}
-            onMouseEnter={() => {
-                isHoveredRef.current = true;
-                stopAutoPlay();
-            }}
-            onMouseLeave={() => {
-                isHoveredRef.current = false;
-                startAutoPlay();
-            }}
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
-            onKeyDown={onKeyDown}
-            tabIndex={0}
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Image carousel"
-        >
-            {/* Slides */}
-            <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${index * 100}%)` }}>
-                {images.map((src, i) => (
-                    <div key={i} className="min-w-full h-[64vh] mx-2">
-                        <div className="w-full h-full bg-gray-100 relative">
-                            {/* Use next/image for optimization; set fill and object-cover */}
-                            <Image
-                                src={src}
-                                alt={`Slide ${i + 1}`}
-                                fill
-                                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 100vw, 100vw"
-                                className="object-cover flex-shrink-0 w-full h-full"
-                                priority={i === 0}
-                            />
-                        </div>
-                        {/* Optional caption area - visible on md */}
-                        <div className="absolute left-4 bottom-4 bg-black bg-opacity-40 text-white px-3 py-1 rounded-md md:block hidden">
-                            <span className="text-sm">{`Image ${i + 1} of ${length}`}</span>
-                        </div>
+        <div className={cn("relative w-full h-[75vh] md:h-[90vh] overflow-hidden rounded-[2.5rem] group shadow-2xl bg-black transition-all", className)}>
+            <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.5 },
+                        scale: { duration: 0.7 },
+                    }}
+                    className="absolute inset-0"
+                >
+                    {/* Background Image */}
+                    <Image
+                        src={SLIDES[currentIndex].image}
+                        alt={SLIDES[currentIndex].title}
+                        fill
+                        className="object-cover brightness-[0.7] transform scale-105"
+                        priority
+                    />
+
+                    {/* Gradient Overlays */}
+                    <div className={cn("absolute inset-0 bg-gradient-to-r", SLIDES[currentIndex].accent)} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                    {/* Content Overlay */}
+                    <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20 lg:px-32">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                            className="max-w-4xl"
+                        >
+                            <div className="flex items-center gap-2 mb-6">
+                                <div className="h-[2px] w-12 bg-indigo-500" />
+                                <span className="text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
+                                    Limited Edition Collection
+                                </span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-8xl font-black text-white mb-6 leading-[1.1] tracking-tight">
+                                {SLIDES[currentIndex].title.split(" ").map((word, i) => (
+                                    <span key={i} className="inline-block mr-4 italic last:not-italic">
+                                        {word}
+                                    </span>
+                                ))}
+                            </h1>
+
+                            <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl font-medium leading-relaxed">
+                                {SLIDES[currentIndex].subtitle}
+                            </p>
+
+                            <div className="flex flex-wrap gap-5">
+                                <button className="group relative bg-white text-black px-8 py-4 rounded-2xl font-bold text-lg overflow-hidden shadow-xl hover:shadow-white/20 transition-all active:scale-95">
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        {SLIDES[currentIndex].buttonText}
+                                        <Sparkles className="w-5 h-5" />
+                                    </span>
+                                    <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                    <span className="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </button>
+
+                                <button className="px-8 py-4 rounded-2xl font-bold text-lg border-2 border-white/30 text-white backdrop-blur-md hover:bg-white/10 transition-all">
+                                    Learn More
+                                </button>
+                            </div>
+                        </motion.div>
                     </div>
-                ))}
+                </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <button
+                    onClick={(e) => { e.stopPropagation(); slidePrev(); }}
+                    className="p-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all pointer-events-auto"
+                >
+                    <ChevronLeft className="w-8 h-8" />
+                </button>
+                <button
+                    onClick={(e) => { e.stopPropagation(); slideNext(); }}
+                    className="p-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all pointer-events-auto"
+                >
+                    <ChevronRight className="w-8 h-8" />
+                </button>
             </div>
 
-            {/* Controls */}
-            <button
-                aria-label="Previous slide"
-                onClick={() => {
-                    prev();
-                }}
-                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white transition-all">
-
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                    <path fillRule="evenodd" d="M12.293 16.293a1 1 0 010 1.414l-1.414 1.414a1 1 0 01-1.414 0L3 12.243l5.465-6.878a1 1 0 011.414 0l1.414 1.414a1 1 0 010 1.414L7.414 12l4.879 4.879z" clipRule="evenodd" />
-                </svg>
-            </button>
-
-            <button
-                aria-label="Next slide"
-                onClick={() => {
-                    next();
-                }}
-                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white transition-all">
-
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                    <path fillRule="evenodd" d="M7.707 3.707a1 1 0 010-1.414L9.121.879a1 1 0 011.414 0l6.879 6.879-5.465 6.878a1 1 0 01-1.414 0L10.121 12.95a1 1 0 010-1.414l4.879-4.879L7.707 3.707z" clipRule="evenodd" />
-                </svg>
-            </button>
-
-            {/* Dots */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-4 z-20 flex gap-2" role="tablist">
-                {images.map((_, i) => (
+            {/* Progress Indicators */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+                {SLIDES.map((_, i) => (
                     <button
                         key={i}
-                        onClick={() => goTo(i)}
-                        className={`w-3 h-3 rounded-full transition-colors ${i === index ? "bg-white" : "bg-white/60"} hover:bg-white`}
-                        aria-label={`Go to slide ${i + 1}`}
-                        aria-selected={i === index}
-                        role="tab"
-                    />
+                        onClick={() => {
+                            setDirection(i > currentIndex ? 1 : -1);
+                            setCurrentIndex(i);
+                        }}
+                        className="relative h-1.5 overflow-hidden rounded-full transition-all duration-300"
+                        style={{ width: i === currentIndex ? "4rem" : "1.5rem" }}
+                    >
+                        <div className={cn(
+                            "absolute inset-0",
+                            i === currentIndex ? "bg-white" : "bg-white/30"
+                        )} />
+                        {i === currentIndex && (
+                            <motion.div
+                                initial={{ x: "-100%" }}
+                                animate={{ x: "0%" }}
+                                transition={{ duration: 6, ease: "linear" }}
+                                className="absolute inset-0 bg-indigo-400 origin-left"
+                            />
+                        )}
+                    </button>
                 ))}
             </div>
         </div>
